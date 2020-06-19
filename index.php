@@ -1,8 +1,13 @@
+<?php  ?>
 <!DOCTYPE HTML>
 <html>
+<html lang="en">
 
 <head>
-    <title>Timeline | Historia Biblica</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Timeline | groups | Nested Groups example (3 levels)</title>
 
     <style>
         body,
@@ -10,7 +15,7 @@
             font-family: arial, sans-serif;
             font-size: 11pt;
         }
-        
+
         #visualization {
             box-sizing: border-box;
             width: 100%;
@@ -155,6 +160,31 @@
         groups.add(sdt[0].groups);
         groups.add(sdt[0].group3);
 
+
+
+        /* ##############  All Jsons  ################ */
+        console.log("IM Here");
+
+        var json_link_all = "https://spreadsheets.google.com/feeds/cells/1xMeJ-7tOTvwiKwHryRrq-WyvsdMkiwXgNSx5GKz5_RA/1/public/full?alt=json";
+        var req_dat_shee = new XMLHttpRequest();
+        req_dat_shee.open('GET', json_link_all);
+        console.log(req_dat_shee);
+        req_dat_shee.onload = function (){
+            if (req_dat_shee.status >= 200 && req_dat_shee.status < 400) {
+        var alldata = JSON.parse(req_dat_shee.response);
+        console.log("Google Data Loading");
+        console.log(alldata);
+
+
+
+      }else {
+        console.log("Google Not Loading");
+        }
+      }
+
+
+
+
         // create a dataset with items
         var items = new vis.DataSet();
         var groupIds = groups.getIds();
@@ -188,6 +218,11 @@
 
         // create a Timeline
         var timeline = new vis.Timeline(container, items, groups, options);
+
+
+
+
+
     </script>
 </body>
 
